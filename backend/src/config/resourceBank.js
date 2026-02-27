@@ -5,7 +5,7 @@
 const resourceBank = {
     // ── PHYSICS ───────────────────────────────────────────────────────────────
     'Rotational Mechanics': [
-        { type: 'youtube', title: 'Rotational Motion Full Video | Physics Wallah', videoId: 'bU-Q-R3hNlY', url: 'https://www.youtube.com/watch?v=bU-Q-R3hNlY', duration: '2h 40m' },
+        { type: 'youtube', title: 'Rotational Motion One Shot | JEE Mains', videoId: 'jndl061NUl4', url: 'https://www.youtube.com/live/jndl061NUl4', duration: '3h 15m' },
         { type: 'pdf', title: 'NCERT Ch 7 - System of Particles', url: 'https://www.tiwariacademy.com/ncert-solutions/class-11/physics/chapter-7/' },
     ],
     'Electrostatics': [
