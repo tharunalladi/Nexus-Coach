@@ -48,33 +48,37 @@ export default function VideoPlayerModal({ resource, onClose }) {
                     {/* Video Player */}
                     <div className="video-modal-player">
                         {embedUrl ? (
-                            <iframe
-                                src={embedUrl}
-                                title={resource.title}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                                allowFullScreen
-                                loading="lazy"
-                            />
+                            <div className="video-iframe-wrapper">
+                                <iframe
+                                    src={embedUrl}
+                                    title={resource.title}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                    allowFullScreen
+                                    loading="lazy"
+                                />
+                                <div className="video-iframe-overlay-hint">
+                                    <p>Can't see the video? <a href={resource.url} target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
+                                </div>
+                            </div>
                         ) : (
                             /* No videoId — show search redirect */
                             <div className="video-no-embed">
                                 <Youtube size={48} color="#FF0000" />
-                                <h3>Video Search</h3>
-                                <p>This topic search will open on YouTube. Click below to watch.</p>
+                                <h3>Tutorial Video Found</h3>
+                                <p>Click below to watch this {resource.topic} tutorial on YouTube.</p>
                                 <a href={resource.url} target="_blank" rel="noopener noreferrer"
-                                    className="btn btn-primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                                    <Youtube size={16} /> Open YouTube Search
+                                    className="btn btn-primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 12, padding: '12px 24px', fontSize: '1rem' }}>
+                                    <Youtube size={20} /> Watch on YouTube
                                 </a>
                             </div>
                         )}
                     </div>
 
                     {/* Footer */}
-                    {resource.duration && (
-                        <div className="video-modal-footer">
-                            ⏱ Duration: {resource.duration} &nbsp;·&nbsp; Press <kbd>Esc</kbd> to close
-                        </div>
-                    )}
+                    <div className="video-modal-footer">
+                        {resource.duration && <span>⏱ Duration: {resource.duration} &nbsp;·&nbsp; </span>}
+                        Press <kbd>Esc</kbd> to close
+                    </div>
                 </motion.div>
             </div>
         </AnimatePresence>
