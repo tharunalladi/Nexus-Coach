@@ -1,0 +1,222 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 16px;
+    z-index: 100;
+    overflow-y: auto;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Logo */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+}
+
+.sidebar-logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--r-md);
+    background: var(--grad-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-btn);
+}
+
+.sidebar-logo-name {
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--text-1);
+    font-family: var(--font-display);
+}
+
+.sidebar-logo-sub {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--brand-4);
+    text-transform: uppercase;
+}
+
+/* User Card */
+.sidebar-user {
+    background: var(--bg-glass-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color var(--t-normal);
+}
+
+.sidebar-user:hover {
+    border-color: var(--border-hover);
+}
+
+.sidebar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--grad-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(0, 96, 255, 0.2);
+}
+
+.sidebar-user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-user-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-user-exam {
+    font-size: 0.68rem;
+    color: var(--text-3);
+    margin-top: 1px;
+}
+
+.sidebar-xp {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.62rem;
+    color: var(--warning);
+    font-weight: 700;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: var(--r-full);
+    padding: 3px 7px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Nav */
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 12px;
+    border-radius: var(--r-md);
+    font-size: 0.855rem;
+    font-weight: 500;
+    color: var(--text-2);
+    transition: all var(--t-fast);
+    position: relative;
+}
+
+.sidebar-link:hover {
+    color: var(--text-1);
+    background: rgba(0, 96, 255, 0.04);
+}
+
+.sidebar-link.active {
+    color: var(--brand-1);
+    background: rgba(0, 96, 255, 0.1);
+    border: 1px solid rgba(0, 96, 255, 0.2);
+}
+
+.sidebar-link.active::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 55%;
+    background: var(--grad-brand);
+    border-radius: 0 3px 3px 0;
+}
+
+/* Footer & AI Status */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.ai-status-card {
+    background: var(--bg-glass-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.ai-status-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--text-2);
+    margin-bottom: 4px;
+}
+
+.ai-status-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.62rem;
+    color: var(--success);
+    font-weight: 600;
+}
+
+.ai-status-dot .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--success);
+}
+
+/* Logout */
+.sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--r-md);
+    font-size: 0.82rem;
+    color: var(--text-3);
+    transition: all var(--t-fast);
+    width: 100%;
+}
+
+.sidebar-logout:hover {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.08);
+}

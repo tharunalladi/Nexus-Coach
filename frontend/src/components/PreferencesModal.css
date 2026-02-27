@@ -1,0 +1,220 @@
+.pref-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.pref-modal-content {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.pref-modal-header {
+    text-align: center;
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(circle at top, rgba(0, 96, 255, 0.1), transparent 70%);
+}
+
+.pref-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: var(--bg-glass-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.pref-modal-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-1);
+}
+
+.pref-modal-header p {
+    color: var(--text-2);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.pref-form {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.pref-error {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--danger);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.pref-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.pref-section-header h3 {
+    font-size: 1.05rem;
+    color: var(--text-1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pref-section-header h3 svg {
+    color: var(--brand-4);
+}
+
+.pref-value-badge,
+.pref-counter {
+    background: var(--bg-glass-1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-4);
+    border: 1px solid var(--border);
+}
+
+.pref-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slider-label {
+    font-size: 0.85rem;
+    color: var(--text-3);
+    font-weight: 500;
+}
+
+.pref-slider {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--bg-2);
+    border-radius: 3px;
+    outline: none;
+}
+
+.pref-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--brand-4);
+    cursor: pointer;
+    border: 3px solid var(--bg-1);
+    box-shadow: 0 0 10px rgba(0, 96, 255, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.pref-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.pref-subtext {
+    font-size: 0.85rem;
+    color: var(--text-3);
+    margin-top: 0.75rem;
+}
+
+.pref-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.pref-pill {
+    background: var(--bg-card, #1e2030);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--text-1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.pref-pill:hover {
+    background: var(--bg-glass-2);
+    border-color: var(--category-color);
+    transform: translateY(-2px);
+}
+
+.pref-pill.selected {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-1);
+    font-weight: 500;
+    box-shadow: 0 0 0 1px var(--category-color) inset;
+}
+
+.pref-pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pref-check {
+    margin-left: auto;
+    color: var(--category-color);
+}
+
+.pref-actions {
+    margin-top: 1rem;
+}
+
+.pref-submit-btn {
+    width: 100%;
+    height: 54px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -5px rgba(0, 96, 255, 0.3);
+}
+
+@media (max-width: 600px) {
+    .pref-grid {
+        grid-template-columns: 1fr;
+    }
+}

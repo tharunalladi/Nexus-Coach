@@ -1,0 +1,52 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q1. PROBLEM STATEMENT (< 100 words)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Over 2 million students appear for JEE, NEET, and EAMCET every year,
+yet most rely on generic study materials that don't address their
+individual weaknesses. Students repeat the same mistakes without
+understanding why, waste time on already mastered concepts, and lack
+real-time feedback. Coaching institutes are expensive, one-size-fits-all,
+and unavailable to rural students. There is no personalized, data-driven
+tool that identifies a student's exact error patterns and adapts their
+entire study plan accordingly — until now.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q2. SOLUTION APPROACH (< 200 words)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NEXUS COACH is an AI-powered exam preparation platform built for
+JEE, NEET, and EAMCET aspirants. It works in four integrated layers:
+
+1. ERROR DNA™ PROFILING — When a student uploads a mock test result
+   or takes a timed practice exam on the platform, our system
+   automatically analyzes every wrong answer, classifying errors by
+   topic, subject, and mistake type (conceptual, calculation, careless).
+   This builds the student's unique "Error DNA" fingerprint.
+
+2. ADAPTIVE PRACTICE — Students can take timed MCQ exams (JEE/NEET/EAMCET)
+   directly on the platform. After submission, scores are auto-analyzed
+   and the Error DNA is updated in real time.
+
+3. AI REVISION PLAN — Using Gemini 2.5 Flash AI, the platform generates
+   a personalized 7-day revision schedule targeted at the student's
+   actual weak topics — not generic syllabus coverage.
+
+4. STUDY MATERIALS + AI TUTOR — Curated topic-specific resources
+   (videos, PDFs) are recommended based on Error DNA. An always-on
+   AI Tutor (powered by Gemini) answers doubts using the Socratic
+   coaching method, personalized to each student's weak areas.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q3. UNIQUE SELLING PROPOSITION (1 sentence)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NEXUS COACH is the only exam prep platform that turns every wrong
+answer into a personalized roadmap — using AI to fingerprint your
+exact Error DNA and automatically adapt your practice, revision plan,
+and study materials so you never repeat the same mistake twice.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,125 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--s-md);
+    margin-bottom: var(--s-xl);
+}
+
+.charts-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: var(--s-lg);
+    margin-bottom: var(--s-lg);
+}
+
+.dna-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-lg);
+    margin-bottom: var(--s-lg);
+}
+
+.quick-actions-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--s-md);
+}
+
+.quick-action-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: var(--s-lg);
+    cursor: pointer;
+    transition: all var(--t-normal);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--grad-brand);
+    transform: scaleX(0);
+    transition: transform var(--t-normal);
+}
+
+.quick-action-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+.quick-action-card:hover::before {
+    transform: scaleX(1);
+}
+
+.quick-action-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--r-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: transform var(--t-spring);
+}
+
+.quick-action-card:hover .quick-action-icon {
+    transform: scale(1.15) rotate(-3deg);
+}
+
+.quick-action-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.quick-action-desc {
+    font-size: 0.75rem;
+    color: var(--text-2);
+}
+
+.weak-topic-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.weak-topic-rank {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg-glass-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--brand-4);
+    flex-shrink: 0;
+}
+
+.dna-score-circle {
+    text-align: center;
+    padding: var(--s-lg) 0;
+}
+
+@media (max-width: 1024px) {
+
+    .charts-row,
+    .dna-row {
+        grid-template-columns: 1fr;
+    }
+}

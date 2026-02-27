@@ -1,0 +1,277 @@
+.analysis-page {
+    padding: var(--s-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--s-2xl);
+}
+
+.title-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dna-icon-wrap {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--r-full);
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+}
+
+.title-area h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-area p {
+    color: var(--text-2);
+    font-size: 0.95rem;
+}
+
+/* ── Grid Layout ── */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    grid-template-areas:
+        "matrix insight"
+        "chart stats";
+    gap: 24px;
+}
+
+@media (max-width: 992px) {
+    .analysis-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "insight"
+            "matrix"
+            "chart"
+            "stats";
+    }
+}
+
+.insight-card {
+    grid-area: insight;
+    background: linear-gradient(180deg, rgba(30, 30, 46, 0.9) 0%, rgba(20, 20, 32, 0.9) 100%);
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.chart-card {
+    grid-area: chart;
+}
+
+.matrix-card {
+    grid-area: matrix;
+}
+
+.stats-container {
+    grid-area: stats;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-content: start;
+}
+
+.insight-card .card-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+/* ── AI Insights ── */
+.badge-live {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    padding: 4px 10px;
+    border-radius: var(--r-full);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.badge-live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
+    animation: pulseObj 2s infinite;
+}
+
+@keyframes pulseObj {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.ai-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-1);
+    margin-bottom: 24px;
+}
+
+.quick-wins-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--brand-4);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quick-wins-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quick-wins-list li {
+    font-size: 0.88rem;
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 16px;
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
+    align-items: flex-start;
+}
+
+.win-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-4);
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+/* ── Matrix ── */
+.topic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.topic-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.topic-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.topic-score {
+    color: var(--text-2);
+}
+
+.topic-bar-bg {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--r-full);
+    overflow: hidden;
+}
+
+.topic-bar-fill {
+    height: 100%;
+    border-radius: var(--r-full);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* ── Stats ── */
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 16px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-3);
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-1);
+}
+
+/* ── Loading / Error ── */
+.dna-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 20px;
+    color: var(--brand-4);
+}
+
+.dna-loading p {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+}
+
+.dna-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    padding: 20px;
+    border-radius: var(--r-md);
+    text-align: center;
+    margin: 40px auto;
+    max-width: 500px;
+}

@@ -1,0 +1,287 @@
+/* ─── Practice Exam Styles ─────────────────────────────────────────────────── */
+
+.practice-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ── Setup Screen ── */
+.exam-setup-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.exam-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-glass-2);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brand-1);
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+.subject-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    background: var(--bg-card);
+    transition: all 0.2s;
+    user-select: none;
+    font-weight: 500;
+    color: var(--text-1);
+}
+
+.subject-toggle:hover {
+    border-color: var(--brand-1);
+    background: var(--bg-glass-2);
+}
+
+.subject-toggle.active {
+    border-color: var(--brand-1);
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--brand-1);
+}
+
+.subject-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.subject-icon {
+    font-size: 1.3rem;
+}
+
+/* ── Exam Screen ── */
+.exam-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.exam-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 24px;
+}
+
+.exam-timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-1);
+}
+
+.exam-timer.danger {
+    color: var(--danger);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.exam-progress-bar {
+    height: 6px;
+    background: var(--bg-glass-2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.exam-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.question-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.question-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.question-subject-badge {
+    background: var(--bg-glass-2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-2);
+}
+
+.question-number {
+    font-size: 0.82rem;
+    color: var(--text-3);
+}
+
+.question-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-1);
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.options-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-card);
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    color: var(--text-1);
+    transition: all 0.15s;
+    width: 100%;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: var(--brand-1);
+    background: var(--bg-glass-2);
+}
+
+.option-btn.selected {
+    border-color: var(--brand-1);
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--brand-1);
+}
+
+.option-btn.correct {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.option-btn.wrong {
+    border-color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.option-label {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.exam-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ── Results Screen ── */
+.results-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    border: 4px solid var(--brand-1);
+}
+
+.score-pct {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--brand-1);
+}
+
+.score-label {
+    font-size: 0.7rem;
+    color: var(--text-3);
+    letter-spacing: 0.5px;
+}
+
+.results-stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+
+.stat-chip {
+    background: var(--bg-glass-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-align: center;
+}
+
+.stat-chip .stat-val {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-1);
+}
+
+.stat-chip .stat-lbl {
+    font-size: 0.72rem;
+    color: var(--text-3);
+}

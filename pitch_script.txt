@@ -1,0 +1,47 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NEXUS COACH — 90-SECOND PRESENTATION SCRIPT
+   (~150 words | speak at moderate pace)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[0:00 – 0:15] THE HOOK
+"Every year, over 2 million students appear for JEE, NEET, and EAMCET.
+Most of them study hard — but they keep repeating the same mistakes.
+Why? Because no one tells them WHY they're getting things wrong.
+That's the problem we're solving."
+
+[0:15 – 0:40] THE SOLUTION
+"Introducing NEXUS COACH — an AI-powered exam preparation platform
+that doesn't just give you questions... it diagnoses you.
+
+When you take a practice test on our platform, our system builds your
+personal 'Error DNA™' — a fingerprint of exactly which topics you're
+weak in, and why. Conceptual gap? Calculation error? Careless mistake?
+We know the difference."
+
+[0:40 – 1:05] THE FEATURES
+"Based on your Error DNA, NEXUS COACH automatically:
+  ✦ Generates a personalized 7-day AI revision plan using Gemini AI
+  ✦ Recommends curated study videos and NCERT PDFs for YOUR weak topics
+  ✦ Gives you a 24/7 AI Tutor that answers doubts in a Socratic style —
+    never just giving you the answer, but making you think.
+
+And every new test you take? Your plan adapts automatically."
+
+[1:05 – 1:20] THE TECH / DIFFERENTIATION
+"We built this with React, Node.js, and Google Gemini 2.5 Flash.
+Unlike Byju's or PW which push the same content to everyone,
+NEXUS COACH is the only platform where no two students
+ever have the same study path."
+
+[1:20 – 1:30] THE CLOSE
+"Your mistakes are your roadmap.
+NEXUS COACH turns them into your biggest advantage.
+Thank you."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DELIVERY TIPS:
+  - Pause 1 second after each bullet point
+  - Say "Error DNA" confidently — it's your hook phrase
+  - Slow down at [1:20] for impact on the close
+  - Make eye contact when saying "no two students ever have the same path"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
