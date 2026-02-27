@@ -1,9 +1,33 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Added Link import
 import api from '../lib/api';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Target, Flame, Zap, BookOpen, Upload } from 'lucide-react';
 import './Progress.css';
+
+const SAMPLE_PROGRESS = {
+    overview: {
+        studyStreak: 12, confidenceScore: 78, burnoutRisk: 0.31,
+        predictedScore: 285, predictedPercentile: 98.4, improvement: 75, totalSessions: 5
+    },
+    scoreHistory: [
+        { date: 'Feb 19', rawScore: 210, percentile: 89.5 },
+        { date: 'Feb 22', rawScore: 230, percentile: 92.1 },
+        { date: 'Feb 24', rawScore: 245, percentile: 94.8 },
+        { date: 'Feb 26', rawScore: 272, percentile: 97.2 },
+        { date: 'Feb 28', rawScore: 285, percentile: 98.4 }
+    ],
+    subjectBreakdown: [
+        { subject: 'Physics', accuracy: 68 },
+        { subject: 'Chemistry', accuracy: 72 },
+        { subject: 'Mathematics', accuracy: 85 }
+    ],
+    weakTopics: [
+        { topic: 'Rotational Mechanics', score: 82, severity: 'critical' },
+        { topic: 'Amines', score: 74, severity: 'high' },
+        { topic: 'Electrostatics', score: 68, severity: 'high' }
+    ]
+};
 
 export default function Progress() {
     const [data, setData] = useState(undefined); // undefined = loading, null = no data
@@ -32,20 +56,23 @@ export default function Progress() {
                     <h1>📊 Progress Report</h1>
                     <p className="text-muted">Track your improvement journey and forecast your performance</p>
                 </div>
-                <div className="card" style={{ textAlign: 'center', padding: '56px 40px' }}>
-                    <div style={{ fontSize: '4rem', marginBottom: 16 }}>📭</div>
-                    <h2 style={{ marginBottom: 10 }}>No Data Yet</h2>
-                    <p className="text-muted" style={{ maxWidth: 420, margin: '0 auto 28px' }}>
+                <div className="empty-state-box">
+                    <div className="empty-icon">📬</div>
+                    <h2>No Data Yet</h2>
+                    <p>
                         Your Progress Report is built entirely from your real test performance.
                         Take a practice exam or upload a mock test to see your score trend, subject accuracy, and AI forecast.
                     </p>
-                    <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <button className="btn btn-primary" onClick={() => navigate('/practice')} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <Zap size={16} /> Start Practice Test
+                    <div className="empty-actions" style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '24px' }}>
+                        <Link to="/practice" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                            Start Practice Test
+                        </Link>
+                        <button onClick={() => setData(SAMPLE_PROGRESS)} className="btn btn-outline" style={{ background: 'var(--bg-glass)', border: '1px solid var(--border)' }}>
+                            View Sample Report
                         </button>
-                        <button className="btn btn-secondary" onClick={() => navigate('/upload')} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <Upload size={16} /> Upload Mock Test
-                        </button>
+                        <Link to="/upload" className="btn btn-secondary" style={{ textDecoration: 'none' }}>
+                            Upload Mock Test
+                        </Link>
                     </div>
                 </div>
             </div>

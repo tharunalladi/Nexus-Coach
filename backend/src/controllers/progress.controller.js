@@ -1,13 +1,14 @@
-const { errorProfiles, testSessions } = require('../config/db');
+const { errorProfiles, testSessions, DEMO_USER } = require('../config/db');
 
 // GET /api/v1/progress
 const getProgress = (req, res) => {
-    const profile = errorProfiles.get(req.user.id);
-    const sessions = testSessions.get(req.user.id) || [];
+    let profile = errorProfiles.get(req.user.id);
+    let sessions = testSessions.get(req.user.id) || [];
 
-    // No data at all → signal frontend to show empty state
+    // Presentation Demo Fallback: If no real data, use seeded demo data
     if (sessions.length === 0 && !profile) {
-        return res.json({ success: true, data: null });
+        profile = errorProfiles.get(DEMO_USER.id);
+        sessions = testSessions.get(DEMO_USER.id) || [];
     }
 
     const scores = sessions.map((s) => ({
