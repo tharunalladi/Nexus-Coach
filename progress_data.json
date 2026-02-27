@@ -1,0 +1,110 @@
+{
+    "success": true,
+    "data": {
+        "overview": {
+            "studyStreak": 12,
+            "confidenceScore": 78,
+            "burnoutRisk": 0.31,
+            "predictedScore": 329,
+            "predictedPercentile": 99.2,
+            "improvement": 75,
+            "totalSessions": 5
+        },
+        "scoreHistory": [
+            {
+                "date": "Feb 19",
+                "rawScore": 210,
+                "percentile": 89.5,
+                "correct": 54,
+                "total": 90
+            },
+            {
+                "date": "Feb 22",
+                "rawScore": 230,
+                "percentile": 92.1,
+                "correct": 58,
+                "total": 90
+            },
+            {
+                "date": "Feb 24",
+                "rawScore": 245,
+                "percentile": 94.8,
+                "correct": 62,
+                "total": 90
+            },
+            {
+                "date": "Feb 26",
+                "rawScore": 272,
+                "percentile": 97.2,
+                "correct": 69,
+                "total": 90
+            },
+            {
+                "date": "Feb 28",
+                "rawScore": 285,
+                "percentile": 98.4,
+                "correct": 72,
+                "total": 90
+            }
+        ],
+        "subjectBreakdown": [
+            {
+                "subject": "Physics",
+                "accuracy": 68,
+                "topicsTracked": 5
+            },
+            {
+                "subject": "Chemistry",
+                "accuracy": 72,
+                "topicsTracked": 4
+            },
+            {
+                "subject": "Mathematics",
+                "accuracy": 85,
+                "topicsTracked": 3
+            },
+            {
+                "subject": "Biology",
+                "accuracy": 0,
+                "topicsTracked": 0
+            }
+        ],
+        "weakTopics": [
+            {
+                "topic": "Rotational Mechanics",
+                "score": 82,
+                "severity": "critical"
+            },
+            {
+                "topic": "Organic - Amines",
+                "score": 74,
+                "severity": "high"
+            },
+            {
+                "topic": "Electrostatics",
+                "score": 68,
+                "severity": "high"
+            },
+            {
+                "topic": "Wave Optics",
+                "score": 61,
+                "severity": "medium"
+            },
+            {
+                "topic": "Thermodynamics",
+                "score": 55,
+                "severity": "medium"
+            },
+            {
+                "topic": "Kinematics",
+                "score": 34,
+                "severity": "low"
+            },
+            {
+                "topic": "Integration",
+                "score": 22,
+                "severity": "low"
+            }
+        ]
+    }
+}
