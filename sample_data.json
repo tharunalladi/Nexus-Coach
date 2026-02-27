@@ -1,0 +1,61 @@
+{
+    "user_profile": {
+        "name": "Riya Sharma",
+        "target_exam": "JEE",
+        "target_year": 2026,
+        "status": "Aspirant"
+    },
+    "error_dna_fingerprint": {
+        "confidence_score": 78,
+        "burnout_risk": "Low (0.31)",
+        "study_streak": "12 Days",
+        "mistake_analysis": {
+            "conceptual_gaps": "42%",
+            "calculation_errors": "33%",
+            "silly_mistakes": "25%"
+        },
+        "topic_weakness_matrix": {
+            "Physics": {
+                "Rotational Mechanics": "Critical (82%)",
+                "Electrostatics": "High (68%)",
+                "Kinematics": "Low (34%)"
+            },
+            "Chemistry": {
+                "Organic - Amines": "High (74%)",
+                "Chemical Equilibrium": "Medium (55%)"
+            },
+            "Mathematics": {
+                "Integration": "Low (22%)"
+            }
+        },
+        "ai_insights": "Your Error DNA shows a clear pattern of conceptual gaps in advanced Physics. Chemistry errors cluster around reaction mechanisms. Math is your strongest subject with minimal errors in Calculus."
+    },
+    "test_session_history": [
+        {
+            "date": "2026-02-28",
+            "exam": "JEE Mock 05",
+            "raw_score": 285,
+            "percentile": 98.4,
+            "accuracy": "80%"
+        },
+        {
+            "date": "2026-02-26",
+            "exam": "JEE Practice - Physics",
+            "raw_score": 272,
+            "percentile": 97.2,
+            "accuracy": "76%"
+        },
+        {
+            "date": "2026-02-24",
+            "exam": "JEE Mock 04",
+            "raw_score": 245,
+            "percentile": 94.8,
+            "accuracy": "68%"
+        }
+    ],
+    "predicted_performance": {
+        "predicted_jee_score": 329,
+        "predicted_percentile": 99.2,
+        "estimated_improvement": "+75 points since Jan"
+    }
+}
