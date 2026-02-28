@@ -56,8 +56,9 @@ Respond ONLY with this exact JSON structure:
 
 // ─── 2. Generate 7-Day Revision Plan ────────────────────────────────────────
 
-const generateRevisionPlan = async (userDb, profile, studentName) => {
-    let weakTopics = '';
+const generateRevisionPlan = async (userDb, profile, sessions, studentName) => {
+    let weakTopics = 'Rotational Mechanics, Organic Chemistry, Electrostatics';
+    let performanceContext = '';
 
     if (profile && profile.topicWeaknessScores) {
         weakTopics = Object.entries(profile.topicWeaknessScores)
@@ -65,57 +66,67 @@ const generateRevisionPlan = async (userDb, profile, studentName) => {
             .slice(0, 5)
             .map(([t, s]) => `${t} (weakness: ${Math.round(s * 100)}%)`)
             .join(', ');
-    } else if (userDb && userDb.weakSubjects && userDb.weakSubjects.length > 0) {
-        weakTopics = userDb.weakSubjects.join(', ');
-    } else {
-        weakTopics = 'Rotational Mechanics, Organic Chemistry, Electrostatics';
+
+        const dist = profile.errorTypeDistribution || {};
+        performanceContext += `Mistake Patterns: ${dist.conceptual}% Conceptual, ${dist.calculation}% Calculation, ${dist.silly}% Silly. `;
+    }
+
+    if (sessions && sessions.length > 0) {
+        const latest = sessions[0];
+        performanceContext += `Recent Performance: Last score ${latest.rawScore}/${latest.totalQuestions} (${latest.percentile} percentile). `;
+        if (sessions.length > 1) {
+            const trend = latest.rawScore >= sessions[1].rawScore ? 'improving' : 'declining';
+            performanceContext += `Trend: ${trend}. `;
+        }
     }
 
     let studyHours = userDb && userDb.weeklyStudyHours ? Math.max(1, Math.round(userDb.weeklyStudyHours / 7)) : 6;
 
-    const systemPrompt = `You are an expert JEE/NEET exam strategist. Create highly personalized, actionable 7-day revision plans. Respond ONLY with valid JSON.`;
+    const systemPrompt = `You are an expert JEE/NEET exam strategist. Create highly personalized, actionable 7-day revision plans based on performance data. Respond ONLY with valid JSON.`;
 
     const userMessage = `Create a 7-day JEE revision plan for ${studentName}.
+    
+    Data Profile:
+    - Top Weak Areas: ${weakTopics}
+    - Score Trends: ${performanceContext}
+    - Availability: ~${studyHours} hours/day
 
-Top Weak Areas: ${weakTopics}
-Study time available: ~${studyHours} hours/day
-
-Return ONLY this JSON:
-{
-  "goal": "One sentence plan goal",
-  "days": [
+    Return ONLY this JSON metadata structure:
     {
-      "day": 1,
-      "date": "Day 1",
-      "theme": "emoji + theme",
-      "totalMins": 360,
-      "tasks": [
+      "goal": "One sentence referencing their current score range and specific focus (e.g., 'Targeting score recovery by fixing conceptual gaps in Physics')",
+      "days": [
         {
-          "id": "task-1-1",
-          "topic": "topic name",
-          "taskType": "study|practice|revision|mock",
-          "estimatedMins": 90,
-          "resources": [{"title": "resource name", "type": "video|pdf|problem_set|link", "url": "https://..."}],
-          "isCompleted": false,
-          "priority": "high|medium|low",
-          "tip": "one quick study tip"
+          "day": 1,
+          "theme": "emoji + theme (e.g., 🔥 Concept Hardening)",
+          "totalMins": ${studyHours * 60},
+          "tasks": [
+            {
+              "id": "uuid",
+              "topic": "topic name",
+              "taskType": "study|practice|revision|mock",
+              "estimatedMins": 90,
+              "resources": [{"title": "resource name", "type": "video|pdf|problem_set|link", "url": "https://..."}],
+              "isCompleted": false,
+              "priority": "high|medium|low",
+              "tip": "specific tip matching their error pattern (e.g. if silly errors high, suggest slower reading)"
+            }
+          ]
         }
-      ]
+      ],
+      "studyTips": ["4 personalized tips based on their mistake pattern"]
     }
-  ],
-  "studyTips": ["tip1", "tip2", "tip3", "tip4"]
-}
 
-Rules: Day 1-2 = hardest topics, Day 3-4 = formulas, Day 5 = mock test, Day 6 = review, Day 7 = light revision. 3 tasks per day (2 for Day 5). 
-For the 'url', generate a real, usable link (e.g., a YouTube search query link like https://www.youtube.com/results?search_query=JEE+topic, or a link to NCERT/concept pages).`;
+    Scoring Logic: 
+    - If 'conceptual' errors > 40%, prioritize 'study' and 'video' tasks.
+    - If 'calculation' or 'silly' errors > 30%, prioritize 'practice' and 'mock' with time limits.
+    - Day 5 must be a full-subject mock.`;
 
     const plan = await grokChat(systemPrompt, userMessage, true);
 
-    // Ensure proper UUIDs for all tasks
     const { v4: uuidv4 } = require('uuid');
     plan.days?.forEach((day) => {
         day.tasks?.forEach((task) => {
-            if (!task.id || task.id.startsWith('task-')) task.id = uuidv4();
+            if (!task.id || task.id.length < 10) task.id = uuidv4();
         });
     });
 

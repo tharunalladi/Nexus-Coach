@@ -65,7 +65,7 @@ export default function Plan() {
                 </div>
                 <h2 style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--text-1)' }}>Your Setup is Complete</h2>
                 <p style={{ color: 'var(--text-2)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
-                    We're ready to synthesize your error profile and personal preferences into a bespoke 7-day revision strategy.
+                    We're ready to synthesize your **test performance history**, **Error DNA™**, and mistake patterns into a high-octane 7-day revision strategy.
                 </p>
                 <button
                     onClick={generatePlan}
@@ -113,8 +113,8 @@ export default function Plan() {
                         <Calendar size={28} className="text-brand-4" />
                     </div>
                     <div>
-                        <h1>Hyper-Personalized Schedule</h1>
-                        <p>{plan.goal}</p>
+                        <h1>Performance-Driven Protocol</h1>
+                        <p>Synthesized from your score trends and Error DNA™</p>
                     </div>
                 </div>
                 <div className="progress-area">

@@ -7,6 +7,7 @@ const { generateRevisionPlan } = require('../services/ai.service');
 const generatePlan = async (req, res, next) => {
     try {
         const profile = errorProfiles.get(req.user.id);
+        const sessions = testSessions.get(req.user.id) || [];
 
         let userDb = null;
         try {
@@ -23,10 +24,10 @@ const generatePlan = async (req, res, next) => {
 
         let planData;
         try {
-            planData = await generateRevisionPlan(userDb, profile, req.user.name);
+            planData = await generateRevisionPlan(userDb, profile, sessions, req.user.name);
         } catch (aiErr) {
             console.warn('Grok AI unavailable, using algorithmic plan');
-            planData = buildAlgorithmicPlan(userDb, profile);
+            planData = buildAlgorithmicPlan(userDb, profile, sessions);
         }
 
         const plan = {
@@ -99,8 +100,11 @@ const getMockPlan = (req, res) => {
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-const buildAlgorithmicPlan = (userDb, profile) => {
+const buildAlgorithmicPlan = (userDb, profile, sessions = []) => {
     let weakTopics = [];
+    const latestScore = sessions.length > 0 ? sessions[0].rawScore : 'N/A';
+    const scoreTrend = sessions.length > 1 ? (sessions[0].rawScore > sessions[1].rawScore ? 'improving' : 'declining') : 'stable';
+
     if (profile && profile.topicWeaknessScores) {
         weakTopics = Object.entries(profile.topicWeaknessScores)
             .sort(([, a], [, b]) => b - a)
