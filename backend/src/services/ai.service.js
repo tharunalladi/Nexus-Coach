@@ -1,10 +1,12 @@
 const { getGrokClient } = require('../config/grok');
+const { getGeminiClient } = require('../config/gemini');
 
-// Grok-3 model — latest from xAI
+// Models
 const GROK_MODEL = 'grok-3';
+const GEMINI_MODEL = 'gemini-1.5-flash';
 
 /**
- * Helper: call Grok chat completions
+ * Helper: call Grok completions
  */
 const grokChat = async (systemPrompt, userMessage, parseJSON = false) => {
     const client = getGrokClient();
@@ -28,6 +30,37 @@ const grokChat = async (systemPrompt, userMessage, parseJSON = false) => {
     }
 
     return text;
+};
+
+/**
+ * Helper: call Gemini completions
+ */
+const geminiChat = async (systemPrompt, userMessage, history = []) => {
+    const genAI = getGeminiClient();
+    if (!genAI) throw new Error('Gemini not configured');
+
+    const model = genAI.getGenerativeModel({ model: GEMINI_MODEL });
+
+    // Format history for Gemini API
+    const contents = [
+        { role: 'user', parts: [{ text: `SYSTEM INSTRUCTION: ${systemPrompt}` }] },
+        { role: 'model', parts: [{ text: 'Understood. I will act as the specified agent.' }] },
+        ...history.map(h => ({
+            role: h.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: h.content || h.text || '' }]
+        })),
+        { role: 'user', parts: [{ text: userMessage }] }
+    ];
+
+    const result = await model.generateContent({
+        contents,
+        generationConfig: {
+            maxOutputTokens: 1000,
+            temperature: 0.7,
+        }
+    });
+
+    return result.response.text().trim();
 };
 
 // ─── 1. Analyze Test Errors ──────────────────────────────────────────────────
@@ -136,13 +169,10 @@ const generateRevisionPlan = async (userDb, profile, sessions, studentName) => {
 // ─── 3. AI Tutor Chat ────────────────────────────────────────────────────────
 
 const chatWithAITutor = async (message, history, studentName, weakTopics) => {
-    const client = getGrokClient();
-    if (!client) throw new Error('Grok not configured');
-
-    const systemPrompt = `You are NEXUS, an AI exam tutor for JEE/NEET powered by Grok. You are tutoring ${studentName}.
-
+    const systemPrompt = `You are NEXUS, an AI exam tutor for JEE/NEET. You are tutoring ${studentName}.
+ 
 Current weak areas: ${weakTopics}
-
+ 
 Rules:
 - Be concise but thorough (max 200 words)
 - Use the Socratic method — guide reasoning, don't just give answers
@@ -150,20 +180,17 @@ Rules:
 - Use emojis sparingly but effectively for engagement
 - Reference student's specific weak topics when relevant`;
 
-    const messages = [
-        { role: 'system', content: systemPrompt },
-        ...history.slice(-8).map((h) => ({ role: h.role, content: h.content })),
-        { role: 'user', content: message },
-    ];
-
-    const response = await client.chat.completions.create({
-        model: GROK_MODEL,
-        messages,
-        temperature: 0.8,
-        max_tokens: 600,
-    });
-
-    return response.choices[0].message.content.trim();
+    try {
+        // Try Gemini first (as per user preference for "excellent" feel)
+        return await geminiChat(systemPrompt, message, history);
+    } catch (err) {
+        console.warn('Gemini error, falling back to Grok:', err.message);
+        try {
+            return await grokChat(systemPrompt, message); // basic fallback, loses history for brevity in error state
+        } catch (grokErr) {
+            throw new Error('All AI services currently unavailable.');
+        }
+    }
 };
 
 // ─── 4. Motivational Message ─────────────────────────────────────────────────
