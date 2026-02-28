@@ -80,54 +80,69 @@ export default function Materials() {
                 </div>
             )}
 
-            {/* Resource Grid */}
+            {/* Resource Grid Grouped by Subject */}
             {data?.recommendations?.length > 0 ? (
-                <div className="materials-grid">
-                    {data.recommendations.map((rec, i) => (
-                        <motion.div key={rec.topic} className="topic-card"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.07 }}>
+                <div className="materials-container">
+                    {['Physics', 'Chemistry', 'Mathematics', 'Biology', 'Other'].map(subject => {
+                        const subjectRecs = data.recommendations.filter(r => r.subject === subject);
+                        if (subjectRecs.length === 0) return null;
 
-                            <div className="topic-card-header">
-                                <h3 className="topic-name">{rec.topic}</h3>
-                                <span className="resource-count">{rec.resources.length} resources</span>
-                            </div>
+                        return (
+                            <div key={subject} className="subject-section" style={{ marginBottom: 40 }}>
+                                <div className="subject-header" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, borderBottom: '1px solid var(--border)', paddingBottom: 10 }}>
+                                    <div className={`subject-dot ${subject.toLowerCase()}`} />
+                                    <h2 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{subject}</h2>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--text-3)', fontWeight: 400 }}>{subjectRecs.length} focus topics</span>
+                                </div>
 
-                            <div className="resource-list">
-                                {rec.resources.map((r, j) => {
-                                    const meta = TYPE_META[r.type] || TYPE_META.article;
-                                    const Icon = meta.icon;
-                                    const isYoutube = r.type === 'youtube';
-                                    return isYoutube ? (
-                                        // YouTube → open in-site modal
-                                        <button key={j} className="resource-item" onClick={() => setActiveVideo(r)}>
-                                            <div className="resource-icon" style={{ background: meta.bg, color: meta.color }}>
-                                                <Play size={16} />
+                                <div className="materials-grid">
+                                    {subjectRecs.map((rec, i) => (
+                                        <motion.div key={rec.topic} className="topic-card"
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: i * 0.05 }}>
+
+                                            <div className="topic-card-header">
+                                                <h3 className="topic-name">{rec.topic}</h3>
+                                                <span className="resource-count">{rec.resources.length} units</span>
                                             </div>
-                                            <div className="resource-info">
-                                                <span className="resource-title">{r.title}</span>
-                                                {r.duration && <span className="resource-duration">⏱ {r.duration}</span>}
+
+                                            <div className="resource-list">
+                                                {rec.resources.map((r, j) => {
+                                                    const meta = TYPE_META[r.type] || TYPE_META.article;
+                                                    const Icon = meta.icon;
+                                                    const isYoutube = r.type === 'youtube';
+                                                    return isYoutube ? (
+                                                        <button key={j} className="resource-item" onClick={() => setActiveVideo(r)}>
+                                                            <div className="resource-icon" style={{ background: meta.bg, color: meta.color }}>
+                                                                <Play size={16} />
+                                                            </div>
+                                                            <div className="resource-info">
+                                                                <span className="resource-title">{r.title}</span>
+                                                                {r.duration && <span className="resource-duration">⏱ {r.duration}</span>}
+                                                            </div>
+                                                            <span className="resource-type-badge" style={{ color: meta.color, background: meta.bg }}>PLAY</span>
+                                                        </button>
+                                                    ) : (
+                                                        <a key={j} href={r.url} target="_blank" rel="noopener noreferrer" className="resource-item">
+                                                            <div className="resource-icon" style={{ background: meta.bg, color: meta.color }}>
+                                                                <Icon size={16} />
+                                                            </div>
+                                                            <div className="resource-info">
+                                                                <span className="resource-title">{r.title}</span>
+                                                                {r.duration && <span className="resource-duration">⏱ {r.duration}</span>}
+                                                            </div>
+                                                            <span className="resource-type-badge" style={{ color: meta.color, background: meta.bg }}>{meta.label}</span>
+                                                        </a>
+                                                    );
+                                                })}
                                             </div>
-                                            <span className="resource-type-badge" style={{ color: meta.color, background: meta.bg }}>PLAY</span>
-                                        </button>
-                                    ) : (
-                                        // PDF/Article → open new tab
-                                        <a key={j} href={r.url} target="_blank" rel="noopener noreferrer" className="resource-item">
-                                            <div className="resource-icon" style={{ background: meta.bg, color: meta.color }}>
-                                                <Icon size={16} />
-                                            </div>
-                                            <div className="resource-info">
-                                                <span className="resource-title">{r.title}</span>
-                                                {r.duration && <span className="resource-duration">⏱ {r.duration}</span>}
-                                            </div>
-                                            <span className="resource-type-badge" style={{ color: meta.color, background: meta.bg }}>{meta.label}</span>
-                                        </a>
-                                    );
-                                })}
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
-                        </motion.div>
-                    ))}
+                        );
+                    })}
                 </div>
             ) : (
                 !error && (
