@@ -39,7 +39,7 @@ const resourceBank = {
         { type: 'pdf', title: 'NCERT Ch 13 - Amines', url: 'https://www.tiwariacademy.com/ncert-solutions/class-12/chemistry/chapter-13/' },
     ],
     'Chemical Equilibrium': [
-        { type: 'youtube', title: 'Chemical Equilibrium | Vedantu', videoId: 'baPVFVOmPJo', url: 'https://www.youtube.com/watch?v=baPVFVOmPJo', duration: '2h 00m' },
+        { type: 'youtube', title: 'Chemical Equilibrium One Shot | JEE Mains', videoId: 'i0j0qqhkfDk', url: 'https://www.youtube.com/live/i0j0qqhkfDk', duration: '3h 30m' },
         { type: 'pdf', title: 'NCERT Ch 7 - Equilibrium', url: 'https://www.tiwariacademy.com/ncert-solutions/class-11/chemistry/chapter-7/' },
     ],
     'Atomic Structure': [
