@@ -13,7 +13,7 @@ const resourceBank = {
         { type: 'pdf', title: 'NCERT Ch 1 - Electric Charges', url: 'https://www.tiwariacademy.com/ncert-solutions/class-12/physics/chapter-1/' },
     ],
     'Wave Optics': [
-        { type: 'youtube', title: 'Wave Optics Full Chapter | JEE', videoId: 'ryP7oER49e8', url: 'https://www.youtube.com/watch?v=ryP7oER49e8', duration: '1h 30m' },
+        { type: 'youtube', title: 'Wave Optics Full One Shot | JEE', videoId: 'p_Xm9UJi2t4', url: 'https://www.youtube.com/live/p_Xm9UJi2t4', duration: '3h 30m' },
         { type: 'pdf', title: 'NCERT Ch 10 - Wave Optics', url: 'https://www.tiwariacademy.com/ncert-solutions/class-12/physics/chapter-10/' },
     ],
     'Thermodynamics': [
@@ -43,21 +43,21 @@ const resourceBank = {
         { type: 'pdf', title: 'NCERT Ch 7 - Equilibrium', url: 'https://www.tiwariacademy.com/ncert-solutions/class-11/chemistry/chapter-7/' },
     ],
     'Atomic Structure': [
-        { type: 'youtube', title: 'Atomic Structure | PW', videoId: 'GuFQEOzFOgA', url: 'https://www.youtube.com/watch?v=GuFQEOzFOgA', duration: '1h 50m' },
+        { type: 'youtube', title: 'Atomic Structure One Shot | PW', videoId: 'qOQnReQ0i4o', url: 'https://www.youtube.com/live/qOQnReQ0i4o', duration: '3h 15m' },
         { type: 'pdf', title: 'NCERT Ch 2 - Structure of Atom', url: 'https://www.tiwariacademy.com/ncert-solutions/class-11/chemistry/chapter-2/' },
     ],
     'Electrochemistry': [
-        { type: 'youtube', title: 'Electrochemistry | JEE Mains', videoId: 'lQ6FchqEuHc', url: 'https://www.youtube.com/watch?v=lQ6FchqEuHc', duration: '2h 20m' },
+        { type: 'youtube', title: 'Electrochemistry One Shot | JEE Mains', videoId: 'cwux4cPB2qI', url: 'https://www.youtube.com/live/cwux4cPB2qI', duration: '4h 00m' },
         { type: 'pdf', title: 'NCERT Ch 3 - Electrochemistry', url: 'https://www.tiwariacademy.com/ncert-solutions/class-12/chemistry/chapter-3/' },
     ],
 
     // ── MATHEMATICS ───────────────────────────────────────────────────────────
     'Integration': [
-        { type: 'youtube', title: 'Integration JEE | Complete', videoId: 'rfG8ce4nNh0', url: 'https://www.youtube.com/watch?v=rfG8ce4nNh0', duration: '2h 30m' },
+        { type: 'youtube', title: 'Integration One Shot | JEE Maths', videoId: 'yY2oUKVAkdY', url: 'https://www.youtube.com/watch?v=yY2oUKVAkdY', duration: '4h 30m' },
         { type: 'pdf', title: 'NCERT Ch 7 - Integrals', url: 'https://www.tiwariacademy.com/ncert-solutions/class-12/maths/chapter-7/' },
     ],
     'Differentiation': [
-        { type: 'youtube', title: 'Differentiation | JEE Maths', videoId: 'N2PpRnFqnqY', url: 'https://www.youtube.com/watch?v=N2PpRnFqnqY', duration: '1h 45m' },
+        { type: 'youtube', title: 'Differentiation One Shot | JEE Maths', videoId: 'pkieEMk82Sk', url: 'https://www.youtube.com/live/pkieEMk82Sk', duration: '3h 45m' },
         { type: 'pdf', title: 'NCERT Ch 5 - Continuity', url: 'https://www.tiwariacademy.com/ncert-solutions/class-12/maths/chapter-5/' },
     ],
     'Probability': [
