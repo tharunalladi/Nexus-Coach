@@ -70,15 +70,6 @@ export default function Materials() {
                 </div>
             )}
 
-            {/* Weak Topics Summary */}
-            {data?.weakTopics && (
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
-                    <span style={{ fontSize: '0.82rem', color: 'var(--text-3)', alignSelf: 'center' }}>Your focus areas:</span>
-                    {data.weakTopics.map(t => (
-                        <span key={t} className="material-topic-badge">{t}</span>
-                    ))}
-                </div>
-            )}
 
             {/* Resource Grid Grouped by Subject */}
             {data?.recommendations?.length > 0 ? (
