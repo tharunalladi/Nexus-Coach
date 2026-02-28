@@ -7,11 +7,16 @@ const getMaterials = async (req, res, next) => {
         const profile = errorProfiles.get(req.user.id);
 
         // Get weak topics from error profile, or use defaults
-        let weakTopics = ['Rotational Mechanics', 'Chemical Equilibrium', 'Integration'];
+        let weakTopics = [
+            'Rotational Mechanics', 'Electrostatics', 'Wave Optics', // Physics
+            'Chemical Equilibrium', 'Atomic Structure', 'Electrochemistry', // Chemistry
+            'Integration', 'Differentiation', 'Probability', // Maths
+            'Cell Biology', 'Genetics' // Biology
+        ];
         if (profile && profile.topicWeaknessScores) {
             const sorted = Object.entries(profile.topicWeaknessScores)
                 .sort(([, a], [, b]) => b - a)
-                .slice(0, 6)
+                .slice(0, 12)
                 .map(([topic]) => topic);
             if (sorted.length > 0) weakTopics = sorted;
         }
